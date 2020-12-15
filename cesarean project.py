@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Dec 12 19:40:03 2020
-
-@author: hamrioui
-"""
 
 
 import pandas as pd
@@ -16,6 +10,8 @@ import statsmodels.api as sm
 from sklearn import linear_model
 from sklearn.preprocessing import LabelEncoder
 import seaborn as sns
+import pickle
+import codecs
 
 
 
@@ -424,5 +420,10 @@ pyplot.show()
 
 #Après analyse de toutes les courbes des différents algorithmes de machine learning il semble que l'algorithme de KNN est le plus pertinent à  predire notre modèle avec une régression presque linéaire et qui sera amélioré si on restreint notre test sur l'ensemble des variables qui affectent le plus notre résultat comme indiqué au dessus. Donc on va choisir l'algorithme KNN pour le déploiment de notre application finale.
 
+#appliquer le modele du KNN sur notre base de données
+model= KNeighborsClassifier(n_neighbors=3)
+model.fit(data1,Caesarian1)
 
+#enregistrer notre modele pour le deploiment dans l'application
+pickle.dump(model,open('model.pkl','wb'))
 
